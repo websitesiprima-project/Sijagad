@@ -25,3 +25,7 @@ frontend/.env.local
 # --- DATA & DOCUMENTS (BARU) ---
 *.csv
 *.xls
+
+# --- LFS ---
+node_modules
+.next/
