@@ -13,7 +13,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "SiJAGAD - PLN UPT Manado",
+  title: "SiJAGAD-PLN - UPT Manado",
   description: "Sistem Jaminan Garansi Digital",
 };
 
