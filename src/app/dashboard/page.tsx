@@ -7,6 +7,7 @@ import Link from "next/link";
 import QRCode from "react-qr-code";
 import Image from "next/image";
 import AnalyticsCharts from "../../components/AnalyticsCharts";
+import TelegramButton from "../../components/TelegramButton";
 import {
   LogOut,
   Plus,
@@ -462,6 +463,8 @@ export default function Dashboard() {
               <FileDown size={20} />{" "}
               <span className="hidden xl:inline font-bold text-xs">EXCEL</span>
             </button>
+
+            <TelegramButton />
 
             {isAdmin && (
               <button
