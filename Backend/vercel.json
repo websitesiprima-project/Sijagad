@@ -6,20 +6,10 @@
       "schedule": "0 0 * * *"
     }
   ],
-  "builds": [
-    {
-      "src": "Backend/api/index.py",
-      "use": "@vercel/python"
-    },
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
   "rewrites": [
     {
-      "source": "/api/python/(.*)",
-      "destination": "Backend/api/index.py"
+      "source": "/api/python/:path*",
+      "destination": "/Backend/api/index.py"
     }
   ]
 }
