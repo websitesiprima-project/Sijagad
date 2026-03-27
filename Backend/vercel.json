@@ -16,18 +16,10 @@
       "use": "@vercel/next"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/api/python/(.*)",
-      "dest": "Backend/api/index.py"
-    },
-    {
-      "src": "/api/keep-alive",
-      "dest": "/api/keep-alive"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/api/python/(.*)",
+      "destination": "Backend/api/index.py"
     }
   ]
 }
