@@ -1,28 +1,26 @@
 import { NextResponse } from "next/server";
-// Pastikan laluan (path) import ini betul mengikut kedudukan fail supabase anda
 import { supabase } from "../../../lib/supabase";
 
-export const dynamic = "force-dynamic"; // Elakkan Next.js daripada meletakkan cache pada fail ini
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {
-    // Buat carian (query) paling ringkas untuk memastikan pangkalan data aktif
-    // Kita hanya panggil 1 data sahaja supaya tidak membebankan server
-    const { data, error } = await supabase
-      .from("letters") // Tukar jika anda mahu guna jadual (table) lain
-      .select("id")
-      .limit(1);
+    // 1. Bangunkan Supabase
+    await supabase.from("letters").select("id").limit(1);
 
-    if (error) throw error;
+    // 2. Bangunkan Backend Python di Vercel
+    const backendUrl = "https://sijagadbackend.vercel.app/";
+    await fetch(backendUrl);
 
     return NextResponse.json({
       status: "Berjaya",
-      message: "Supabase telah berjaga! 🚀",
+      message: "Supabase & Vercel Backend sudah bangun! ⚡",
       timestamp: new Date().toISOString(),
     });
-  } catch (error: any) {
+  } catch (_error) {
+    // <-- Tambahkan underscore di sini
     return NextResponse.json(
-      { status: "Gagal", message: error.message },
+      { status: "Gagal", message: "Terjadi kesalahan pada sistem keep-alive" },
       { status: 500 },
     );
   }

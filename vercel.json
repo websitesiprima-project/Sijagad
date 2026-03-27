@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "crons": [
+    {
+      "path": "/api/keep-alive",
+      "schedule": "0 0 * * *"
+    }
+  ],
+  "builds": [
+    {
+      "src": "Backend/api/index.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/python/(.*)",
+      "dest": "Backend/api/index.py"
+    },
+    {
+      "src": "/api/keep-alive",
+      "dest": "/api/keep-alive"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
